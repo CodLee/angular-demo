@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='test'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../../comme/angular-1.5.8/angular.min.js'></script>
+	<script>
+	var app = angular.module('test',[]);
+		app.factory('lee',function(){
+			return 'lee'
+		});
+		app.controller('ctrl1',function($scope,$http,lee){
+			$scope.arr=[];
+			$scope.lee='lee';
+		});
+	</script>
+</head>
+<body ng-controller='ctrl1'>
+<div>{{lee}}</div>
+</body>
+</html>

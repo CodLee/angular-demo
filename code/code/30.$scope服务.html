@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+	<p>{{name}}</p>
+	<div ng-controller="TestController">
+		<h2>{{name}}</h2>
+	</div>
+	<script>
+		var m1 = angular.module('myApp',[]);
+		
+		m1.controller('TestController',['$scope','$rootScope',function($scope,$rootScope){
+
+			$scope.name = 'angular';
+			$rootScope.name = "root";
+			console.dir($scope);
+			console.dir($rootScope);
+		}]);
+
+	</script>
+</body>
+</html>

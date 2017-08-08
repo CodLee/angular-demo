@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+
+	<div ng-controller="FirstController">
+		<p>{{myService.name}}</p>
+		<p>{{myService.age}}</p>		
+		<button ng-click="addAge()">add</button>
+	</div>
+	
+	<div ng-controller="SecondController">
+		<p>{{myService.name}}</p>
+		<p>{{myService.age}}</p>
+	</div>
+	<script>
+		var m1 = angular.module('myApp',[]);
+
+		m1.controller('FirstController',['$scope','myService',function($scope,myService){
+			//此处，就可以使用myService服务了
+			/*$scope.username = myService.name;
+			$scope.age = myService.age;*/
+			$scope.myService = myService;
+			$scope.addAge = function(){
+				 $scope.myService.age++;
+			}
+		}]);
+		
+		m1.controller('SecondController',['$scope','myService',function($scope,myService){
+			// $scope.username = myService.name;
+			// $scope.age = myService.age;
+			$scope.myService = myService;
+		}]);
+
+
+
+		//factory自定义服务 ---- 计数器
+		m1.factory('myService',function(){
+			//代码
+			var name = "angularjs";
+			var age = 7;
+			//中间是一系列的处理过程
+			//最终要返回一个对象
+			return {
+				name : name,
+				age : age
+			}
+		});
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+angular.callbacks._0([    //angular.callbacks._0不能写成JSON_CALLBACK
+{
+	"title": "农村婚礼闹洞房 大家这样玩伴娘  谁还敢去",
+	"date": "2016-12-30 11:32",
+	"author_name": "菲儿小主",
+	"thumbnail_pic_s": "http:\/\/03.imgmini.eastday.com\/mobile\/20161230\/20161230_f251ea03f06e9094ad8a633df8846bbd_mwpm_03200403.png",
+	"thumbnail_pic_s02": "http:\/\/03.imgmini.eastday.com\/mobile\/20161230\/20161230_f251ea03f06e9094ad8a633df8846bbd_mwpl_05500201.png",
+	"thumbnail_pic_s03": "http:\/\/03.imgmini.eastday.com\/mobile\/20161230\/20161230_f251ea03f06e9094ad8a633df8846bbd_mwpl_05500201.png",
+	"url": "http:\/\/mini.eastday.com\/mobile\/161230113217132.html?qid=juheshuju",
+	"uniquekey": "161230113217132",
+	"type": "头条",
+	"realtype": "社会"
+}, {
+	"title": "24岁女教师竟爱上13岁男学生，并还为其堕胎 震惊所有人！",
+	"date": "2016-12-30 11:38",
+	"author_name": "今日情感头条",
+	"thumbnail_pic_s": "http:\/\/07.imgmini.eastday.com\/mobile\/20161230\/20161230_99da961e9cf92136c7300f91a6c34f4a_mwpm_03200403.jpg",
+	"thumbnail_pic_s02": "http:\/\/07.imgmini.eastday.com\/mobile\/20161230\/20161230_99da961e9cf92136c7300f91a6c34f4a_mwpl_05500201.jpg",
+	"thumbnail_pic_s03": "http:\/\/07.imgmini.eastday.com\/mobile\/20161230\/20161230_99da961e9cf92136c7300f91a6c34f4a_mwpl_05500201.jpg",
+	"url": "http:\/\/mini.eastday.com\/mobile\/161230113852893.html?qid=juheshuju",
+	"uniquekey": "161230113852893",
+	"type": "头条",
+	"realtype": "社会"
+}, {
+	"title": "记住了：见到这种“20”元人民币，千万要注意了",
+	"date": "2016-12-30 11:52",
+	"author_name": "古玩君",
+	"thumbnail_pic_s": "http:\/\/03.imgmini.eastday.com\/mobile\/20161230\/20161230_fcfec59a4ba8537ea1b6446ef411006e_cover_mwpm_03200403.jpeg",
+	"thumbnail_pic_s02": "http:\/\/03.imgmini.eastday.com\/mobile\/20161230\/20161230_fcfec59a4ba8537ea1b6446ef411006e_cover_mwpl_05500201.jpeg",
+	"thumbnail_pic_s03": "http:\/\/03.imgmini.eastday.com\/mobile\/20161230\/20161230_fcfec59a4ba8537ea1b6446ef411006e_cover_mwpl_05500201.jpeg",
+	"url": "http:\/\/mini.eastday.com\/mobile\/161230115229055.html?qid=juheshuju",
+	"uniquekey": "161230115229055",
+	"type": "头条",
+	"realtype": "社会"
+}, {
+	"title": "新郎新娘准备出席婚礼，然而下一秒 竟然惊呆在场好友！",
+	"date": "2016-12-30 11:16",
+	"author_name": "今日情感头条",
+	"thumbnail_pic_s": "http:\/\/09.imgmini.eastday.com\/mobile\/20161230\/20161230_94fcda168aeed9a4dfbea2b3b21b09c5_mwpm_03200403.jpg",
+	"thumbnail_pic_s02": "http:\/\/09.imgmini.eastday.com\/mobile\/20161230\/20161230_94fcda168aeed9a4dfbea2b3b21b09c5_mwpl_05500201.jpg",
+	"thumbnail_pic_s03": "http:\/\/09.imgmini.eastday.com\/mobile\/20161230\/20161230_94fcda168aeed9a4dfbea2b3b21b09c5_mwpl_05500201.jpg",
+	"url": "http:\/\/mini.eastday.com\/mobile\/161230111645810.html?qid=juheshuju",
+	"uniquekey": "161230111645810",
+	"type": "头条",
+	"realtype": "社会"
+}, {
+	"title": "全球最美100人范冰冰落榜，内地第一美女你猜不到竟是她！",
+	"date": "2016-12-30 09:13",
+	"author_name": "星扒客push",
+	"thumbnail_pic_s": "http:\/\/03.imgmini.eastday.com\/mobile\/20161230\/20161230091311_8028639583a27ce3df06bbc0afe04b52_1_mwpm_03200403.jpeg",
+	"thumbnail_pic_s02": "http:\/\/03.imgmini.eastday.com\/mobile\/20161230\/20161230091311_8028639583a27ce3df06bbc0afe04b52_1_mwpl_05500201.jpeg",
+	"thumbnail_pic_s03": "http:\/\/03.imgmini.eastday.com\/mobile\/20161230\/20161230091311_8028639583a27ce3df06bbc0afe04b52_1_mwpl_05500201.jpeg",
+	"url": "http:\/\/mini.eastday.com\/mobile\/161230091311835.html?qid=juheshuju",
+	"uniquekey": "161230091311835",
+	"type": "头条",
+	"realtype": "娱乐"
+}
+
+])

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='test'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../../comme/angular-1.5.8/angular.min.js'></script>
+	<script>
+		var app= angular.module('test',[]);
+		app.filter('kuaiji',function(){
+			return function(input,arg){
+				if(input<0){
+					return arg +':('+ -input+')';
+				}else{
+					return  arg +':'+input;
+				}
+			}
+		})
+		app.controller('ctrl',['$scope','$http',function($s,$t){
+			$s.datas ={
+				arr:[1,2,3,4,5,6]
+			}
+			//$emit向上发送
+			$s.fn=function(){
+				$s.$emit('test_evet',{a:2,b:3});
+			}
+
+			//$broadcast自身及子集发送
+			$s.fn1=function(){
+				$s.$broadcast('test_evet',{a:2,b:3});
+				
+			}
+			$s.$on('test_evet',function(event,datas){
+				console.log(datas);
+			});
+		}]);
+		app.controller('ctrl2',['$scope','$http',function($s,$t){
+			$s.$on('test_evet',function(event,datas){
+				console.log(datas);
+				$s.datas.obj=datas;
+			});
+		}]);
+	</script>
+</head>
+<body ng-init='init=0;' >
+	<div ng-controller='ctrl'>
+		ng1
+		<button ng-click='fn1()'>点击事件广播</button>
+		<ul>
+			<li ng-repeat='item in datas.arr'>{{item}}</li>
+		</ul>
+		<div ng-controller='ctrl2'>
+			ng2
+			<ul>
+				<li ng-repeat = 'item in datas.obj'>{{item}}</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html> 
+

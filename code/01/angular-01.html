@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular.js</title>
+	<script src='../../comme/angular-1.5.8/angular.js'></script>
+	<style>
+		.active{
+			background: #ccc;
+		}
+	</style>
+</head>
+<body ng-app='module'>
+<div ng-controller='ctrl1'>
+	<!-- <input type="text" ng-model='str'>
+	<div ng-bind='str'></div>
+	<div ng-init='arr=[1,22,33,44,5,5,5,5,5]'>
+		<li ng-repeat='item in arr track by $index'>
+			{{$index}} ---{{item}}
+		</li>
+	</div>
+	<div ng-init='json={a:12,b:23,c:45}'>
+		<li ng-repeat='(key,val) in json'>
+			{{$index}} -{{key}}--{{val}}
+		</li>
+	</div> -->
+	<div>
+		<button ng-repeat='item in json' ng-click='fn($index)' class='{{$index==now?"active":""}}'>{{item.name}}</button>
+		<div ng-repeat='item in json' ng-show='$index== now'>{{item.content}}</div>
+	</div>
+</div>
+	<script>
+		angular.module('module',[]).controller('ctrl1',function($scope,$http){
+				$scope.json=[
+					{name:'Home',content:'home124'},
+					{name:'News',content:'新闻'},
+					{name:'Enter',content:'娱乐'},
+					{name:'App',content:'app页面'}
+				];
+				$scope.now=0;
+				$scope.fn=function(n){
+					$scope.now=n;
+				}
+
+		})
+	</script>
+</body>
+</html>

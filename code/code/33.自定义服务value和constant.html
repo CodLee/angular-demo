@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+
+	<div ng-controller="FirstController">
+		<p>{{username}}</p>
+		<p>{{number}}</p>
+	</div>
+
+	<script>
+		var m1 = angular.module('myApp',[]);
+
+		m1.controller('FirstController',['$scope','name','PI',function($scope,name,PI){
+			$scope.username = name;
+			$scope.number = PI;
+		}]);
+		// console.log(m1);
+
+		//定义变量和常量服务
+		m1.value('name','angularjs');
+		m1.constant('PI',3.1415926);
+
+	</script>
+</body>
+</html>

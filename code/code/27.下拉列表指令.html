@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+	<style>
+		/* form .ng-dirty.ng-valid {background: #0c0;}
+		form .ng-dirty.ng-invalid {background: #c00;} */
+	</style>
+</head>
+<body>
+	<div ng-controller="TestController">
+		
+		<select name="" ng-options="item for item in list" ng-model="selected"></select>
+		
+		<br>
+
+		<select name="" ng-model="user" ng-options="item.name for item in users"></select>
+	</div>
+	
+	<script>
+		var m1 = angular.module('myApp',[]);
+		m1.controller("TestController",['$scope','$timeout',function($scope,$timeout){
+			
+			$scope.list = ['html','css','js','angularjs'];
+			$scope.selected = $scope.list[0];
+
+			$scope.users = [
+				{name : 'andy', age : 18},
+				{name : 'jack', age : 19},
+				{name : 'tom', age : 20}
+			];
+
+			$scope.user= $scope.users[1];
+
+		}]);
+
+
+	</script>
+</body>
+</html>

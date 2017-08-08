@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='test'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../../comme/angular-1.5.8/angular.min.js'></script>
+	<script src='../../comme/angular-1.5.8/angular-route.min.js'></script>
+	<script src='./controller/user.js'></script>
+	<script>
+		var app= angular.module('test',['ngRoute','userCtrl']);
+		app.config(function($routeProvider){
+			console.log($routeProvider);
+			$routeProvider
+			.when('/user',{
+				templateUrl:"./views/uers.html",
+				controller:'userController'
+
+			})
+			.when('/article',{
+				templateUrl:"./views/article.html",
+				controller:'artController',
+				resolve:{
+					delay:function($q){ //$q即promise
+						var delay = $q.defer();//执行defer生成一个delay对象
+						/****************/
+						// console.log($q);
+						setTimeout(function(){
+							delay.resolve();//resolve执行
+						},3000);
+						
+						/*******************/
+
+						return delay.promise;
+					}
+				}
+			})
+			.when('/setting',{
+				templateUrl:"./views/setting.html",
+				controller:'setController'
+			})
+		});
+	
+		app.controller('ctrl',['$scope','$http','$route',function($s,$t,$r){
+			
+		}]);
+	</script>
+</head>
+<body ng-init='init=0;' >
+<p>router不是默认包含router</p>
+	<div ng-controller='ctrl'>
+		<a href="#/user">用户中心</a>
+		<a href="#/article">文章列表</a>
+		<a href="#/setting">配置中心</a>
+		<!-- 切换区域 -->
+		<ng-view>占位符</ng-view>
+	</div>
+</body>
+</html> 
+

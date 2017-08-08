@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+	<style>
+		table {border-collapse: collapse; border: 1px solid #ccc; width: 700px;}
+		table td, table th {border:1px solid #ccc; padding: 10px;}
+	</style>
+</head>
+<body>
+	<div ng-controller="CartController">
+		<h3>购物车</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>商品名称</th>
+					<th>商品价格</th>
+					<th>购买数量</th>
+					<th>小计</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in goods">
+					<td>{{$index+1}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.price | currency:"￥"}}</td>
+					<td><input type="number" ng-model="item.count" min="0"></td>
+					<td>{{ item.price * item.count | currency:"￥" }}</td>
+					<td><a href="javascrip:;" ng-click="goods.splice($index,1)">删除</a></td>
+				</tr>
+				<tr>
+					<td colspan="6">合计：<strong>{{total() + fee | currency:"￥"}}</strong> 
+					其中运费为 <em> {{fee}} </em>(说明，金额超过5000,免运费)元。
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+		angular.module('myApp',[]).controller('CartController',['$scope',function($scope){
+			$scope.goods = [
+				{
+					name : 'iphone 6s手机',
+					count : 1,
+					price : 4688
+				},
+				{
+					name : 'angularjs高级程序设计',
+					count : 2,
+					price : 100
+				},
+				{
+					name : '杰克琼斯羽绒服',
+					count : 2,
+					price : 599
+				}
+			];
+
+			$scope.fee = 0; //运费
+			//统计总的金额
+			$scope.total = function(){
+				var sum = 0;
+				$scope.goods.forEach(function(item){
+					sum += item.price * item.count;
+				});
+				return sum;
+			}
+
+			//需要监听 $scope.total
+			$scope.$watch($scope.total,function(newVal,oldVal){
+				//对newVal进行判断
+				if (newVal >= 5000 ) {
+					$scope.fee = 0;
+				} else {
+					$scope.fee = 50;
+				}
+			});
+			
+			
+		}]);
+	
+	</script>
+</body>
+</html>

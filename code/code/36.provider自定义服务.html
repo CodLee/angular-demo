@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+
+	<div ng-controller="FirstController">
+			
+	</div>
+	
+	<div ng-controller="SecondController">
+
+	</div>
+	<script>
+		var m1 = angular.module('myApp',[]);
+
+		m1.controller('FirstController',['$scope','myService',function($scope,myService){
+			console.log(myService);
+		}]);
+		
+		m1.controller('SecondController',['$scope','myService',function($scope,myService){
+			
+		}]);
+
+
+
+		//provider方式
+		m1.provider('myService',function(){
+			//各种代码
+			return { //必须返回一个对象
+				//各种代码
+				$get : function(){ //必须包含一个$get属性，属性值是函数
+					//各种代码
+					return { //必须返回一对象
+						name : 'angularjs',
+						age : 7
+					};
+				}
+			};
+		});
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='test'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../../comme/angular-1.5.8/angular.min.js'></script>
+	<script src='../../comme/angular-1.5.8/angular-route.min.js'></script>
+	<script>
+		var app= angular.module('test',['ngRoute']);
+		app.config(function($routeProvider){
+			console.log($routeProvider);
+			$routeProvider
+			.when('/user',{
+				templateUrl:"./views/uers.html",
+				controller:'userController'
+
+			})
+			.when('/article',{
+				template:"<p>文章类表</p>"
+			})
+			.when('/setting',{
+				template:"<p>配置中心</p>"
+			})
+		});
+		app.controller('userController',function($scope){
+			$scope.username='Lee';
+			$scope.psdword='******';
+		})
+		app.controller('ctrl',['$scope','$http','$route',function($s,$t,$r){
+			$s.loading=false;
+			$s.$on('$routeChangeStart',function(){
+				$s.loading=true;
+				alert('换页开始');
+			});
+			$s.$on('$routeChangeSuccess',function(){
+				$s.loading=true;
+				alert('换页end');
+			});
+			$s.$on('$routeChangeError',function(){
+				$s.loading=true;
+				alert('换页error');
+			});
+		}]);
+	</script>
+</head>
+<body ng-init='init=0;' >
+<p>router不是默认包含router</p>
+	<div ng-controller='ctrl'>
+
+		<a href="#/user">用户中心</a>
+		<a href="#/article">文章列表</a>
+		<a href="#/setting">配置中心</a>
+		<!-- 切换区域 -->
+		<div ng-show='loading'>正在加载。。。。</div>
+		<ng-view>占位符</ng-view>
+	</div>
+</body>
+</html> 
+

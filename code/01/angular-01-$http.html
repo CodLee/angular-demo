@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular.js</title>
+	<script src='../../comme/angular-1.5.8/angular.js'></script>
+</head>
+<body ng-app='test'>
+	<div ng-controller='lee'>
+		{{a}}
+		<p><button ng-click='http()'>点击</button></p>
+		<p><button ng-click='http1()'>点击1</button></p>
+	</div>
+	<div ng-controller='Lee'>
+		{{a}}
+	</div>
+	<script>
+	var app = angular.module('test',[]);
+	app.controller('lee',function($scope,$http){
+		$scope.a=12;
+		/*http两个参数 url,参数*/
+		// a.php?a=xxx&b=xxx
+		$scope.http=function(){
+			var _this = this;
+			$http.get('a.php',{
+				params:{a:5,b:10},
+				responseType:'json'
+			}).then(function(res){
+				alert('请求成功');
+				alert(res.data);
+				_this.a = res;
+			},function(res){
+				alert('请求失败')
+			});
+		}
+		$scope.http1=function(){
+			var _this = this;
+			$http.get('aa.php',{
+				params:{a:5,b:10}
+				// ,responseType:'json'
+			}).success(function(res){
+				alert('请求成功');
+				console.log(res);
+				_this.a = res;
+			}).error(function(res){
+				alert('请求失败')
+			});
+		}
+	});
+	app.controller('Lee',function($scope){
+		$scope.a='121212Le';
+		$scope.show=function(){
+			alert()
+		}
+	});
+	</script>
+</body>
+</html>

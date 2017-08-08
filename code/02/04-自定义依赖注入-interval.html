@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='test'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../../comme/angular-1.5.8/angular.min.js'></script>
+	<script>
+	var app = angular.module('test',[]);
+		app.factory('interval',function(){
+			return function(fn,time){
+				return setInterval(fn,time);
+			};
+		});
+		app.factory('test',function(){
+			return {
+				a:12,
+				b:4
+			}
+		});
+		app.decorator('test',function($delegate){
+			$delegate.c=99;
+			return $delegate;
+		});
+		app.provider('lee',function(){
+			this.$get=function(){
+
+			}
+		});
+		app.service('leeservice',function(){
+			this.lee = 'leeSe';
+		});
+		console.log(setInterval)
+		app.controller('ctrl1',function($scope,$http,test,lee,interval,leeservice){
+			console.log(interval);
+			console.log(test)
+			$scope.arr=[];
+			$scope.a=0;
+			$scope.b=0;
+			$scope.lee='lee';
+			setInterval(function(){
+				$scope.a++;
+				// $scope.$apply();//强制更新
+			},1000);
+			interval(function(){
+				$scope.b++;
+			},1000);
+		});
+	</script>
+</head>
+<body ng-controller='ctrl1'>
+	<div>{{lee}}</div>
+	<div>{{a}}</div>
+	<div>{{b}}</div>
+</body>
+</html>

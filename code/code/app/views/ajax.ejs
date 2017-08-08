@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="/style/bootstrap.css">
+	<script src="/js/angular-1.5.0.min.js"></script>
+	<style>
+		.media-left img {width: 100px; height: 70px;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div ng-controller="TestController">
+			<div class="page-header">
+				<h3>新闻列表 <button class="btn btn-primary" ng-click="loadNews()">loading data</button></h3>
+			</div>
+
+			<ul class="media-list">
+				<li class="media" ng-repeat="item in news.result.data">
+					<a href="" class="media-left">
+						<img ng-src="{{item.thumbnail_pic_s}}" alt="">
+					</a>
+					<div class="media-body">
+						<h4><a ng-href="">{{item.title}}</a></h4>
+						<p>{{item.author_name}}  {{item.type}} {{item.date}}</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	
+	<script>
+		var m1 = angular.module('myApp',[]);
+		// var url = "http://localhost:3000/js/news.json";
+		// var url = "http://v.juhe.cn/toutiao/index?type=top&key=fdbe4736f44b03fd18310ae63d058e69";
+		// var url ="http://localhost:4000/?callback=JSON_CALLBACK";
+		var url = "http://localhost:3000/proxy?target=http://v.juhe.cn/toutiao/index?type=top&key=fdbe4736f44b03fd18310ae63d058e69";
+		m1.controller("TestController",['$scope','$http',function($scope,$http){
+			// console.dir($http);
+			$scope.loadNews = function(){
+				$http.get(url).success(function(response){
+					console.log(JSON.parse(response));
+					$scope.news = JSON.parse(response);
+				});
+			}
+		}]);
+
+
+	</script>
+</body>
+</html>

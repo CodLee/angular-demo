@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+	<div ng-controller="ParentController">
+		<h2>这是父控制器ParentController</h2>
+		<p>{{root}}</p>
+		<p>{{name}}</p>
+		<p>{{parent}}</p>
+		<p>{{son}}</p>
+		<div ng-controller="SonController">
+			<h2>这是子控制器SonController</h2>
+			<p>{{root}}</p>
+			<p>{{name}}</p>
+			<p>{{son}}</p>
+			<p>{{parent}}</p>
+		</div>
+
+	</div>
+	
+	
+	<div ng-controller="FirstController">
+		<p>{{name}}</p>
+		<p>{{root}}</p>
+		<p>{{first}}</p>
+		<p>{{parent}}</p>
+		<p>{{second}}</p>
+	</div>
+
+	<div ng-controller="SecondController">
+		<p>{{name}}</p>
+		<p>{{root}}</p>
+	</div>
+	
+	<script>
+		
+		var m1 = angular.module('myApp',[]);
+		m1.controller("ParentController",['$scope',function($scope){
+			$scope.name = "parent";
+			$scope.parent = "这是parent的作用域";
+		}]);
+
+
+		m1.controller('SonController',['$scope','$rootScope',function($scope,$rootScope){
+			$scope.name = "son";
+			$scope.son = "这是son的作用域";
+			$rootScope.root = "所有控制器共享的一个变量";
+		}]);
+
+		m1.controller('FirstController',['$scope',function($scope){
+			$scope.name = "first";
+			$scope.first = "这是first的作用域";
+		}]);
+
+		m1.controller('SecondController',['$scope',function($scope){
+			$scope.name = "second";
+			$scope.second = "这是second的作用域";
+		}]);
+	</script>
+</body>
+</html>

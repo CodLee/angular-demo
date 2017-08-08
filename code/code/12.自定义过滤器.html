@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+	<script>
+		var m1 = angular.module('myApp',[]);
+		m1.controller('TestController',function($scope,$filter){
+			$scope.username = "tom";
+			//在控制器中，先使用$filter来获取过滤器，然后使用
+			//$filter("uppercase"),就是一个函数，直接调用函数即可
+			$scope.code = $filter("uppercase")("axfc");
+		});	
+		//自定义过滤器
+		m1.filter('captalize',function(){
+			return function(str){
+				//将angularjs一分为二,a + ngularjs，将a转成大小，再和后面的部分连接起来
+				return  str.charAt(0).toUpperCase() + str.slice(1);
+			}
+		});
+	</script>
+	
+	<div ng-controller="TestController">
+		<h2>{{username | uppercase}}</h2>
+		<h3>{{code}}</h3>
+		<p>{{ 'angularjs' | captalize }}</p>
+	</div>
+	
+	
+</body>
+</html>

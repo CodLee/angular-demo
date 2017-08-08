@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+	<div ng-controller="TestController">
+		
+		<!--
+		用户名：<input type="text" disabled> <br>
+		<input type="checkbox" checked=""> 同意协议与条款 <br>
+		邮箱：<input type="email" value="kkkk@163.com" readonly=true>
+		-->
+		
+		用户名：<input type="text" ng-disabled="disable"> <br>
+		<input type="checkbox" ng-checked="check"> 同意协议与条款 <br>
+		邮箱：<input type="email" value="kkkk@163.com" ng-readonly="read">
+	</div>
+	
+	<script>
+		
+		var m1 = angular.module('myApp',[]);
+		m1.controller("TestController",['$scope',function($scope){
+
+			$scope.disable = false;
+			$scope.check = true;
+			$scope.read = false;
+
+			$scope.goods = [
+				{
+					name : 'iphone 6s手机',
+					count : 1,
+					price : 4688
+				},
+				{
+					name : 'angularjs高级程序设计',
+					count : 2,
+					price : 100
+				},
+				{
+					name : '杰克琼斯羽绒服',
+					count : 2,
+					price : 599
+				}
+			];
+
+		}]);
+
+
+	</script>
+</body>
+</html>

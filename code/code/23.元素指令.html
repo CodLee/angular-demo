@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+	<div ng-controller="TestController">
+		<h2 ng-if="exists">元素指令ng-if</h2>
+		<h2 ng-if="!exists">ng-if指令</h2>
+
+		<p ng-show="show">ng-show</p>
+		<p ng-hide="show">ng-hide</p>
+	</div>
+	
+	<script>
+		var m1 = angular.module('myApp',[]);
+		m1.controller("TestController",['$scope','$timeout',function($scope,$timeout){
+			$scope.exists = true;
+			$scope.show = true;
+		}]);
+
+
+	</script>
+</body>
+</html>

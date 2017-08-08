@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style/bootstrap.css">
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+	<script>
+		var m1 = angular.module('myApp',[]);
+		m1.controller('TodoController',['$scope',function($scope){
+
+			//先模拟一点数据
+			$scope.todos = {
+				user : 'andy',
+				items : [
+					{name : '吃饭', done : true},
+					{name : '睡觉', done : false},
+					{name : '打魔兽', done : true}
+				]
+			};
+
+			//添加任务的方法
+			$scope.addTodo = function(todo){
+				if (todo) {
+					$scope.todos.items.push({name : todo, done : false});
+				} else {
+					alert('任务名称不能为空');
+				}
+				
+			}
+
+			//统计任务完成情况 
+			$scope.count = function(){
+				var cnt = 0;
+				$scope.todos.items.forEach(function(item){
+					if (!item.done) {
+						cnt++
+					}
+				});
+				return cnt;
+			}
+
+			//根据任务的完成情况，返回对应的class
+			$scope.warningLevel = function(){
+				return $scope.count()  > 2 ? "label label-danger" : "label label-success";
+			}
+
+		}]);
+
+		//自定义过滤器
+		m1.filter('checkTodos',function(){
+			/*
+				 [
+					{name : '吃饭', done : true},
+					{name : '睡觉', done : false},
+					{name : '打魔兽', done : true}
+				]
+			*/
+			return function(todos,show) {
+				//根据showAll来进行筛选，返回新的数组
+				// var result = [];
+				// todos.forEach(function(todo){
+				// 	//当满足什么条件时? showAll 要么为true，要么为false
+				// 	//如果showAll为true，表示所有的任务都应该显示，都push
+				// 	//如果showAll为false,未完成的都应该显示，需要push，就是done为flase的
+				// 	if ( show == true || todo.done == false ) {
+				// 		result.push(todo);
+				// 	}
+				// });
+				// return result;
+
+				todos.forEach(function(todo,index){
+					if (todo.done && !show ) {
+						todos.splice(index,1);
+					}
+				});
+
+				return todos;
+			}
+			
+		});
+	</script>
+	<div class="container" ng-controller="TodoController">
+		<div class="page-header">
+			<h2>{{todos.user}}'s todo list 
+			<label ng-class="warningLevel()" ng-hide="count() === 0">{{count()}}</label></h2>
+		</div>
+
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="what's your task?" ng-model="todo">
+			<span class="input-group-btn">
+				<button class="btn btn-primary" ng-click="addTodo(todo)">添加</button>
+			</span>
+		</div>
+		<br>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>任务名称</th>
+					<th>完成情况</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in todos.items" ng-if="!item.done || showAll">
+					<td>{{$index+1}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.done}}</td>
+					<td><input type="checkbox" ng-model="item.done"></td>
+					<td><a href="javascript:;" ng-click="todos.items.splice($index,1)">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p class="checkbox"><label for="chb">
+			<input type="checkbox" id="chb" ng-model="showAll">显示所有</label>
+		</p>
+	</div>
+</body>
+</html>

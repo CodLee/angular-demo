@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style/bootstrap.css">
+	<script src="js/angular-1.5.0.min.js"></script>
+	<script src="js/angular-1.5.0-route.js"></script>
+</head>
+<body>
+	<script>
+		var m1 = angular.module('myApp',['ngRoute']);
+		// console.log(m1);
+		m1.config(["$routeProvider",function($routeProvider){
+			// console.log($routeProvider);
+			// $routeProvider.when("/",{template:"<h3>这是首页</h3>"});
+			// $routeProvider.when("/list",{template:"<h3>这是列表页面</h3>"});
+			// $routeProvider.when("/detail",{template:"<h3>这是详情页面</h3>"});
+			// $routeProvider.when("/user",{template:"<h3>这是用户中心页面</h3>"});
+	/*		$routeProvider
+				.when("/",{
+					template:"<h3>这是首页</h3>"
+				})
+				.when("/list",{
+					template:"<h3>这是列表页面</h3>"
+				})
+				.when("/detail",{
+					template:"<h3>这是详情页面</h3>"
+				})
+				.when("/user",{
+					template:"<h3>这是用户中心页面</h3>"
+				})*/
+			$routeProvider
+				.when("/",{
+					templateUrl:"home.html",
+					controller : 'HomeController'
+				})
+				.when("/list",{
+					templateUrl:"list.html",
+					controller : 'ListController'
+				})
+				.when("/detail",{
+					templateUrl:"detail.html",
+					controller : "DetailController"
+				})
+				.when("/user",{
+					templateUrl:"user.html",
+					controller : 'UserController'
+				})
+				.otherwise({
+					redirectTo : '/'
+				});
+			// $routeProvider.otherwise();
+		}]);
+		/*m1.config(function($routeProvider){
+
+		});*/
+
+		//定义控制器如下
+		m1.controller("HomeController",['$scope',function($scope){
+			$scope.name = "首页";
+		}]);
+
+		m1.controller("ListController",['$scope',function($scope){
+			$scope.name = "列表页";
+		}]);
+
+		m1.controller("DetailController",['$scope',function($scope){
+			$scope.name = "详情页";
+		}]);
+
+		m1.controller("UserController",['$scope',function($scope){
+			$scope.name = "用户中心页";
+		}]);
+
+	</script>
+	<div class="container">
+		<div class="page-header">
+			<h2>AngularJS 路由</h2>
+		</div>
+		<ul>
+			<li><a href="#/">首页</a></li>
+			<li><a href="#/list">列表页</a></li>
+			<li><a href="#/detail">详情页</a></li>
+			<li><a href="#/user">用户中心</a></li>
+		</ul>
+		
+		<div class="well">
+			<ng-view>
+			</ng-view>
+		</div>
+	
+	</div>
+</body>
+</html>

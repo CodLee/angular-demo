@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="phoneApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style/bootstrap.css">
+	<script src="js/angular-1.5.0.min.js"></script>
+	<script src="js/angular-1.5.0-route.js"></script>
+	<script src="app.module.js"></script>
+	<script src="app.config.js"></script>
+	<script src="controllers/ListController.js"></script>
+	<script src="controllers/DetailController.js"></script>
+	<style>
+		.media-left img {width: 160px; height: 160px; border: 1px solid #ccc; padding: 5px;}
+		.big-pic {width: 350px; height: 350px; border: 1px solid #ccc; padding: 5px;}
+		.small-pic {width: 110px; height: 110px; border: 1px solid #ccc; padding: 5px;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h3>Phonecat</h3>
+		</div>
+
+		<ng-view></ng-view>
+
+	</div>
+
+</body>
+</html>

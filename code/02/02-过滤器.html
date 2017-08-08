@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='test'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../../comme/angular-1.5.8/angular.min.js'></script>
+	<script>
+		var app= angular.module('test',[]);
+		app.filter('kuaiji',function(){
+			return function(input,arg){
+				if(input<0){
+					return arg +':('+ -input+')';
+				}else{
+					return  arg +':'+input;
+				}
+			}
+		})
+		app.controller('ctrl',['$scope','$http',function($s,$t){
+			$s.arr=[1.234,2,-3,4,-5,6,7,8,-8,8,9];
+			$s.$watch('init',function(){
+				alert('init改变了');
+			},true);
+			// $get(url,{params:{}}).success(fn(res){}).error(fn(res){});
+		}]);
+	</script>
+</head>
+<body ng-init='init=0;' ng-controller='ctrl'>
+<le></le> 
+
+	<ul>
+		<li ng-repeat='item in arr track by $index'>{{ item | kuaiji:'￥' }}---{{$index}}</li>
+	</ul>
+</body>
+</html> 
+
+%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\ruanjian\node\;C:\Program Files\Java\jdk1.6.0_20\bin;C:\Program Files\Java\jre6\bin;D:\ruanjian\git\Git\cmd;D:\ruanjian\mysql-5.7.17-winx64\bin;C:\Program Files (x86)\MySQL\MySQL Utilities 1.3.5\;C:\Program Files\TortoiseSVN\bin

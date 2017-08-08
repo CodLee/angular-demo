@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+	<style>
+		table {border-collapse: collapse; border: 1px solid #ccc; width: 800px;}
+		table th, table td {border: 1px solid #ccc; padding: 10px;}
+	</style>
+</head>
+<body>
+	<div ng-controller="TestController">
+		
+		
+	
+		<h2 ng-repeat-start="item in goods">{{item.name}}</h2>
+		<p>{{item.price}}</p>
+		<p ng-repeat-end>{{item.count}}</p>
+		
+		
+		<ul>
+			<li ng-repeat="item in list" >
+				{{item}}
+			</li>
+		</ul>
+
+		<table>
+			<thead>
+				<tr>
+					<th>index</th>
+					<th>first</th>
+					<th>last</th>
+					<th>middle</th>
+					<th>even</th>
+					<th>odd</th>
+					<th>商品名称</th>
+					<th>商品价格</th>
+					<th>购买数量</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in goods">
+					<td>{{$index}}</td>
+					<td>{{$first}}</td>
+					<td>{{$last}}</td>
+					<td>{{$middle}}</td>
+					<td>{{$even}}</td>
+					<td>{{$odd}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.price}}</td>
+					<td>{{item.count}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	
+	<script>
+		
+		var m1 = angular.module('myApp',[]);
+		m1.controller("TestController",['$scope',function($scope){
+			$scope.list = ['html','css','js','angularjs'];
+			$scope.goods = [
+				{
+					name : 'iphone 6s手机',
+					count : 1,
+					price : 4688
+				},
+				{
+					name : 'angularjs高级程序设计',
+					count : 2,
+					price : 100
+				},
+				{
+					name : '杰克琼斯羽绒服',
+					count : 2,
+					price : 599
+				},
+						{
+					name : 'iphone 6s手机',
+					count : 1,
+					price : 4688
+				},
+				{
+					name : 'angularjs高级程序设计',
+					count : 2,
+					price : 100
+				},
+				{
+					name : '杰克琼斯羽绒服',
+					count : 2,
+					price : 599
+				}		
+
+			];
+
+		}]);
+
+
+	</script>
+</body>
+</html>

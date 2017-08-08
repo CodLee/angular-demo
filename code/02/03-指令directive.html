@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='test'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../../comme/angular-1.5.8/angular.min.js'></script>
+	<script>
+		var app= angular.module('test',[]);
+		app.filter('kuaiji',function(){
+			return function(input,arg){
+				if(input<0){
+					return arg +':('+ -input+')';
+				}else{
+					return  arg +':'+input;
+				}
+			}
+		});
+		app.directive('lee',function(){
+			var json={
+				restrict:'E',//约束
+				template:'<span>abc</span>'
+			}
+			return json
+		});
+		app.controller('ctrl',['$scope','$http',function($s,$t){
+			$s.arr=[1.234,2,-3,4,-5,6,7,8,-8,8,9];
+
+
+			$s.$watch('init',function(){
+				alert('init改变了');
+
+			},true);
+			// $get(url,{params:{}}).success(fn(res){}).error(fn(res){});
+		}]);
+	</script>
+</head>
+<body ng-init='init=0;' ng-controller='ctrl'>
+<lee></lee>
+	<ul>
+		<li ng-repeat='item in arr track by $index'>{{ item | kuaiji:'￥' }}---{{$index}}</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+
+	<div ng-controller="FirstController">
+			
+	</div>
+	
+	<div ng-controller="SecondController">
+
+	</div>
+	<script>
+		var m1 = angular.module('myApp',[]);
+
+		m1.controller('FirstController',['$scope','myService',function($scope,myService){
+			// console.log(myService);
+			console.log( myService.say() );
+			myService.setAge(20);
+			console.log( myService.say() );
+			
+		}]);
+		
+		m1.controller('SecondController',['$scope','myService',function($scope,myService){
+			console.log( myService.say() );
+		}]);
+
+
+
+		//service方式定义服务
+		m1.service('myService',Person);
+		//创建一个构造器
+		function Person(){
+			this.name = 'angular';
+			this.age = 7;
+		}
+
+		Person.prototype.say = function(){
+			return this.name + "--" + this.age;
+		}
+
+		Person.prototype.setAge = function(age){
+			this.age = age;
+		}
+
+
+
+	</script>
+</body>
+</html>

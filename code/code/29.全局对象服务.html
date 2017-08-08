@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+	<h2>控制器之外的h2标签</h2>
+	<div ng-controller="TestController">
+		<h2 id="title">全局对象服务</h2>
+		<button ng-click="click()">点击</button>
+	</div>
+	
+	<script>
+		var m1 = angular.module('myApp',[]);
+		m1.controller("TestController",['$scope','$window','$document','$location','$timeout','$interval',function($scope,$window,$document,$location,$timeout,$interval){
+			
+			console.dir($document);
+			console.dir($location);
+
+			var timer = $interval(function(){
+				console.log('aa')
+			},2000);
+
+			$scope.click = function(){
+
+				$interval.cancel(timer);
+				// $window.alert('点击了');
+				// $document.find('h2').css('color',"#f00");
+				// angular.element(document.getElementById('title')).css('color',"#00f");
+				// $window.alert($location.protocol());
+
+				// setInterval(function(){
+				// 	console.log('aa');
+				// },2000);
+
+			
+
+			}
+			
+		}]);
+
+
+	</script>
+</body>
+</html>

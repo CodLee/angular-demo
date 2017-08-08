@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+	<script src="js/angular-sanitize.min.js"></script>
+</head>
+<body>
+	<div ng-controller="TestController">
+		<h2 ng-bind="name | uppercase"></h2>
+		<h2>{{name}}</h2>
+		<p>{{ "hello" + "world" }}</p>
+		<p>{{ 50 + 50 }}</p>
+		
+		<p>{{name}} --- {{password}}</p>
+		<p ng-bind-template="{{name}} --- {{password}}"></p>
+
+		<p>{{html}}</p>
+		<p ng-bind-html="html"></p>
+		
+		<p>{{name}}</p>
+		<p ng-non-bindable>{{name}}</p>
+	</div>
+	
+	<script>
+		
+		var m1 = angular.module('myApp',['ngSanitize']);
+		m1.controller("TestController",['$scope',function($scope){
+			$scope.name = "ng-bind-aaa";
+			$scope.password = "88888";
+			$scope.html = "<strong>HTML字符串</strong>";
+
+		}]);
+
+
+	</script>
+</body>
+</html>

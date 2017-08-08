@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='test'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../../comme/angular-1.5.8/angular.min.js'></script>
+	<script>
+		var app= angular.module('test',[]);
+		app.filter('kuaiji',function(){
+			return function(input,arg){
+				if(input<0){
+					return arg +':('+ -input+')';
+				}else{
+					return  arg +':'+input;
+				}
+			}
+		});
+		app.factory('dataCom',function(){
+			return {
+				a:0
+			}
+		});
+		app.controller('ctrl2',['$scope','$http','dataCom',function($s,$t,$c){
+			console.log($c.a);
+		}]);
+		app.controller('ctrl',['$scope','$http','dataCom',function($s,$t,$c){
+			$c.a=12345;
+		}]);
+	</script>
+</head>
+<body ng-init='init=0;' >
+	<div ng-controller='ctrl'>
+	
+	</div>
+	<div ng-controller='ctrl2'>
+	
+	</div>
+</body>
+</html> 
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular.js</title>
+	<script src='../../comme/angular-1.5.8/angular.js'></script>
+</head>
+<body ng-app='test'>
+	<div ng-controller='lee'>
+		{{a}}
+		<p><button ng-click='show()'></button></p>
+	</div>
+	<div ng-controller='Lee'>
+		{{a}}
+	</div>
+	<script>
+	var app = angular.module('test',[]);
+	app.controller('lee',function($scope){
+		$scope.a=12;
+	});
+	app.controller('Lee',function($scope){
+		$scope.a='121212Le';
+		$scope.show=function(){
+			alert()
+		}
+	});
+	</script>
+</body>
+</html>

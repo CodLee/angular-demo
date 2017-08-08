@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="test">
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="angular.js"></script>
+<script>
+var app=angular.module('test', []);
+app.filter('showAsHtml',function($sce){
+	return function(input){
+		return $sce.trustAsHtml(input);
+	}
+});
+app.controller('cont1', function ($scope, $http,$sce){
+	$scope.aaa = $sce.trustAsHtml("<h3>html代码</h3>");	
+	$scope.bbb = "<h3>html代码</h3>";	
+	console.log($scope.aaa,$scope.bbb);
+});
+</script>
+</head>
+
+<body ng-controller="cont1">
+	{{aaa}}
+	<div ng-bind-html='aaa'></div>
+	<hr>
+	{{bbb|showAsHtml}}
+	<div ng-bind-html='bbb|showAsHtml'></div>
+
+</body>
+</html>

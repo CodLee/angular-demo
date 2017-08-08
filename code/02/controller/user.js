@@ -1,0 +1,29 @@
+angular.module('userCtrl',[])
+.controller('userController',function($scope){
+		$scope.username='Lee';
+		$scope.psdword='******';
+})
+.controller('artController',function($scope,$http){
+		$scope.arr=[];
+		$scope.fn=function(){
+			$http.get('../02/datas/news.txt')
+			.success(function(res){
+				alert('请求成功');
+				console.log(res);
+			}).error(function(res){
+				alert('请求失败')
+			});
+		}
+		
+		/*$scope.arr=[
+			{title:'q123',content:'发证三农奥德就静安寺放假哦啊到'},
+			{title:'ewe',content:'发证三农奥额外二十多岁德就静安寺放假哦啊到'},
+			{title:'q1wer23',content:'搜房网发证三农奥德就静安寺放假哦啊到'},
+			{title:'q1q3we23',content:'发证饿我随碟附送发的三 为首的非微软农奥德就静安寺放假哦啊到'},
+			{title:'q1qwer2323',content:'水电费微软是随碟附送发证三农奥德就静安寺放假哦啊到'}
+		];*/
+})
+.controller('setController',function($scope){
+		$scope.title='Lee';
+		$scope.discribe='设置中心问题上的';
+})

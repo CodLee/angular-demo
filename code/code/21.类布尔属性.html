@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+	<div ng-controller="TestController">
+		<!-- <img src="{{src}}" alt="">
+		<a href="{{url}}">百度</a> -->
+		
+		<a>angularjs</a>
+		<img alt="">
+
+		<img ng-src="{{src}}" alt="">
+		<a ng-href="{{url}}">百度</a>
+	</div>
+	
+	<script>
+		var m1 = angular.module('myApp',[]);
+		m1.controller("TestController",['$scope','$timeout',function($scope,$timeout){
+			$timeout(function(){
+				$scope.src = "images/angular.jpg";
+				$scope.url = "http://www.baidu.com";
+			},10000);
+
+		}]);
+
+
+	</script>
+</body>
+</html>

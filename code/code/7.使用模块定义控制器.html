@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.3.0-beta.14.js"></script>
+</head>
+<body>
+	<div ng-controller="TestController">
+		<h2>{{name}}</h2>
+	</div>
+	
+	<div ng-controller="DemoController">
+		<p>还剩下 {{seconds}} s</p>
+	</div>
+	<script>
+		//创建一个模块
+		var m1 = angular.module("myApp",[]);
+		// console.log(m1);
+		// console.log (angular.module("myApp") );
+
+		//使用模块定义控制器
+		m1.controller("TestController",function($scope){
+			$scope.name = "Angularjs";
+		});
+
+		//推荐的写法
+		m1.controller("DemoController",['$scope','$interval',function($s,$i){
+			$s.seconds = 10;
+			var timer = $i(function(){
+				$s.seconds--;
+				if ($s.seconds <= 0) {
+					$i.cancel(timer);
+				}
+			},1000);
+		}]);
+
+	</script>
+</body>
+</html>

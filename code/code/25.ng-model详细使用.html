@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+	<div ng-controller="TestController">
+		<!--
+			用户名：<input type="text" ng-model="username">  --- {{username}}<br>
+			密码：<input type="password" ng-model="pwd"> --- {{pwd}}<br>
+			邮箱：<input type="email" ng-model="email"> --- {{email}}<br>
+			网址：<input type="url" ng-model="url"> --- {{url}}<br>
+			自我介绍：<textarea cols="50" rows="5" ng-model="introduce"></textarea> ---{{introduce}} <br>
+			年龄：<input type="number" value="18" ng-model="age"> ---{{age}}
+		-->
+
+		<label for="">性别：</label>
+		<input type="radio" name="sex" value='男性' ng-model="gender"> 男
+		<input type="radio" name="sex" value='女性' ng-model="gender"> 女
+		
+		<p>{{gender}}</p>
+
+		<hr>
+		
+		<input type="checkbox" value="100" ng-model="agree" ng-true-value=" 'angularjs' " ng-false-value=" 'html' "> 同意条款
+		<p>{{agree}}</p>
+
+		<hr>
+		<label for="">你喜欢的美女是：</label>
+		<select name="" id="" ng-model="beauty">
+			<option value="王昭君">昭君</option>
+			<option value="杨玉环">玉环</option>
+			<option value="西西施">西施</option>
+			<option value="貂蝉蝉">貂蝉</option>
+		</select>
+		<p>{{beauty}}</p>
+
+	</div>
+	
+	<script>
+		var m1 = angular.module('myApp',[]);
+		m1.controller("TestController",['$scope','$timeout',function($scope,$timeout){
+			$scope.beauty = '西西施';
+		}]);
+
+
+	</script>
+</body>
+</html>

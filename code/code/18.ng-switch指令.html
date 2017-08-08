@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+	<style>
+		table {border-collapse: collapse; border: 1px solid #ccc; width: 800px;}
+		table th, table td {border: 1px solid #ccc; padding: 10px;}
+	</style>
+</head>
+<body>
+	<div ng-controller="TestController">
+		<div ng-switch on="mode">
+			<div ng-switch-when="list">
+				<!-- 列表显示-->
+				<ul>
+					<li ng-repeat="item in goods">
+						<span>{{item.name}} ---- {{item.price}} ---- {{item.count}}</span>
+					</li>
+				</ul>
+			</div>
+			<div ng-switch-when="table">
+				<!-- 表格显示 -->
+				<table>
+					<tr>
+						<th>#</th>
+						<th>商品名称</th>
+						<th>价格</th>
+						<th>库存</th>
+					</tr>
+					<tr ng-repeat="item in goods">
+						<td>{{$index+1}}</td>
+						<td>{{item.name}}</td>
+						<td>{{item.price}}</td>
+						<td>{{item.count}}</td>
+					</tr>
+				</table>
+			</div>
+			<div ng-switch-default>
+				默认显示
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		
+		var m1 = angular.module('myApp',[]);
+		m1.controller("TestController",['$scope',function($scope){
+			$scope.mode = "table"; //list列表显示、还可以设置为table
+			$scope.goods = [
+				{
+					name : 'iphone 6s手机',
+					count : 1,
+					price : 4688
+				},
+				{
+					name : 'angularjs高级程序设计',
+					count : 2,
+					price : 100
+				},
+				{
+					name : '杰克琼斯羽绒服',
+					count : 2,
+					price : 599
+				}
+			];
+
+		}]);
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+	<div ng-controller="TestController">
+		<p>商品名称：{{goods.name}}</p>
+		<p>价格：{{goods.price}}</p>
+		<p>库存：{{goods.number}}</p>
+		<p>上架时间：{{goods.time}}</p>
+		<p>{{goods}}</p>
+		<hr>
+		<p>商品名称：{{goods.name | lowercase}}</p>
+		<p>价格：{{goods.price | currency : "￥" }}</p>
+		<p>库存：{{goods.number | number}}</p>
+		<p>上架时间：{{goods.time | date : "yyyy年MM月dd日 HH:mm:ss"}}</p>
+		<p>{{goods | json}}</p>
+
+	</div>
+
+	<script>
+		var m1 = angular.module("myApp",[]);
+		m1.controller("TestController",["$scope",function($scope){
+			$scope.goods = {
+				name : "iphone 6S PLUS",
+				price : 4688,
+				number : 99999,
+				time : new Date()
+			};
+		}]);
+	</script>
+</body>
+</html>

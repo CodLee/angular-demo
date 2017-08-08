@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Angular</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="common/bootstrap.css">
+	<script src='./common/angular.min.js'></script>
+	<script src='./common/angular-route.min.js'></script>
+	<script src="./common/menu.js"></script>
+	<script src="./common/article.js"></script>
+	<script src="./common/app.js"></script>
+	<style>
+		.fl{
+			float: left;
+			padding:0 10px;
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4 logo-img">logo</div>
+		<div class="col-xs-8 logo-item"></div>
+	</div>
+
+	<ul ng-controller='menus' style='height:30px'>
+		<li ng-repeat='item in menus' class='fl'>
+			{{item.name}}
+		</li>
+	</ul>
+	<div ng-controller='articles'>
+		<div ng-repeat = "item in articleList">
+			<h3><a href={{item.url}}>{{item.title}}</a></h3>
+			<p>
+				作者：<span class="author">{{item.author_name}}</span>
+				时间：<span class="date">{{item.date}}</span>
+				类别：<span class="categroy">{{item.realtype}}</span>
+			</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

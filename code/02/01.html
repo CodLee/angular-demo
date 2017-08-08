@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" ng-app=''>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../../comme/angular-1.5.8/angular.min.js'></script>
+</head>
+<body ng-init='arr=[1,2,3,4];now =0;'>
+	{{now}}
+	<br>
+	<input type="button" value="btn" ng-click='now = 1'>
+	ng-repeat与ng-click不可共处，ng-click不可直接赋值
+	<div ng-repeat='item in arr'>	
+		<input type="button" value="btn" ng-click='now = 123'>
+			{{item}}---{{$index}}
+	</div>
+</body>
+</html>

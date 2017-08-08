@@ -1,0 +1,14 @@
+<table>
+	<tr>
+		<th>#</th>
+		<th>商品名称</th>
+		<th>价格</th>
+		<th>库存</th>
+	</tr>
+	<tr ng-repeat="item in goods">
+		<td>{{$index+1}}</td>
+		<td>{{item.name}}</td>
+		<td>{{item.price}}</td>
+		<td>{{item.count}}</td>
+	</tr>
+</table>

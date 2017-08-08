@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+	<style>
+		.box { background: #ccc; }
+		.red {color: red; font-weight: bold;}
+		.blue {color: blue; font-weight: bold;}
+		table {border-collapse: collapse; border: 1px solid #ccc; width: 600px;}
+		table td,table th { border: 1px solid #ccc; padding: 10px 15px; }
+		.odd {background: #f00;}
+		.even {background: #0f0;}
+	</style>
+</head>
+<body>
+	<div ng-controller="TestController">
+		<p ng-class=" count > 3 ? 'red' : 'blue' ">管理类与css</p>
+		<p ng-style="{color: myColor}">行内样式</p>
+
+		<h3>商品表格</h3>
+		<table>
+			<tr>
+				<th>#</th>
+				<th>名称</th>
+				<th>价格</th>
+				<th>库存</th>
+			</tr>
+			<tr ng-repeat="item in goods" ng-class-even="'even'" ng-class-odd="'odd'">
+				<td>{{$index+1}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.price}}</td>
+				<td>{{item.count}}</td>
+			</tr>
+		</table>
+	</div>
+	
+	<script>
+		var m1 = angular.module('myApp',[]);
+		m1.controller("TestController",['$scope','$timeout',function($scope,$timeout){
+			$scope.para1 = "box";
+			$scope.myColor = "#f00";
+			$scope.count = 10;
+
+			$scope.goods = [
+				{
+					name : 'iphone 6s手机',
+					count : 1,
+					price : 4688
+				},
+				{
+					name : 'angularjs高级程序设计',
+					count : 2,
+					price : 100
+				},
+				{
+					name : '杰克琼斯羽绒服',
+					count : 2,
+					price : 599
+				},
+				{
+					name : 'angularjs高级程序设计',
+					count : 2,
+					price : 100
+				},
+				{
+					name : '杰克琼斯羽绒服',
+					count : 2,
+					price : 599
+				}
+			];
+		}]);
+
+
+	</script>
+</body>
+</html>

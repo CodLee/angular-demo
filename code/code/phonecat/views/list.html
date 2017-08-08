@@ -1,0 +1,33 @@
+<div ng-controller="ListController">		
+	<div class="row">
+		<div class="col-md-3">
+			<div class="form-group">
+				<label for="">搜索</label>
+				<input type="text" class="form-control" ng-model="keyword">
+			</div>
+			<div class="form-group">
+				<label for="">排序</label>
+				<select name="" id="" ng-model="condition">
+					<option value="name">名称</option>
+					<option value="age">年份</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<ul class="media-list">
+				<li class="media" ng-repeat="phone in phones | filter:keyword | orderBy:condition">
+					<a href="#/{{phone.id}}" class="media-left">
+						<img src="{{phone.imageUrl}}" alt="" >
+					</a>
+					<div class="media-body">
+						<div class="media-heading">
+							<h4><a href="#/{{phone.id}}">{{phone.name}}</a></h4>
+							<p>{{phone.snippet}}</p>
+							<p>{{phone.age}}</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

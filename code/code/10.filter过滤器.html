@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/angular-1.5.0.min.js"></script>
+</head>
+<body>
+	<div ng-controller="TestController">
+		
+		<table>
+			<tr>
+				<th>#</th>
+				<th>姓名</th>
+				<th>年龄</th>
+			</tr>
+			<tr ng-repeat="item in children | filter : {name : 'i'}">
+				<td>{{$index+1}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.age}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<script>
+		var m1 = angular.module("myApp",[]);
+		m1.controller("TestController",["$scope",function($scope){
+			$scope.children= [
+				{name:'cindy',age:4},
+		        {name:'kimi4',age:3},
+		        {name:'anglar',age:4},
+		        {name:'shitou',age:6},
+		        {name:'tiantian',age:5}
+		    ];
+		}]);
+	</script>
+</body>
+</html>

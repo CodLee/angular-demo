@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="test">
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="angular.js"></script>
+<script>
+var app=angular.module('test', []);
+
+app.controller('cont1', function ($scope, $http){
+	$scope.data={};
+	$scope.search='a';
+	$scope.$watch('search',function(){
+		/*$jsonp(url,)*/
+		// alert(12);
+		// $http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+		// $http.jsonp('http://suggestion.baidu.com/su',{
+		// 		params:{
+		// 			wd:$scope.search,
+		// 			cd:'JSON_CALLBACK'
+		// 			// cd:'show'
+		// 		}
+		$http.jsonp('jsonp.php?callback=JSON_CALLBACK').success(function(res){
+			alert('success');
+			console.info('success');
+			console.info(res);
+		}).error(function(){
+			alert('请求失败')
+		});
+	},true);
+});
+</script>
+</head>
+
+<body ng-controller="cont1">
+	<input type="text" ng-module ='search'>
+	<ul>
+		<li ng-repeat='item in data'>
+			{{item}}
+		</li>
+	</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
